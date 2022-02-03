@@ -336,4 +336,40 @@ Rail transport, Roads and Road transport
 		</xsd:simpleContent>
 	</xsd:complexType>
 	<!-- ======================================================================= -->
+	<xsd:simpleType name="DatedVehicleJourneyIdType">
+		<xsd:annotation>
+			<xsd:documentation>Type for identifier of a DATED VEHICLE JOURNEY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="VehicleJourneyIdType"/>
+	</xsd:simpleType>
+	<xsd:complexType name="DatedVehicleJourneyRefStructure">
+		<xsd:annotation>
+			<xsd:documentation>Type for a reference to a DATED VEHICLE JOURNEY.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="VehicleJourneyRefStructure">
+				<xsd:attribute name="ref" type="DatedVehicleJourneyIdType" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Identifier of DATED VEHICLE JOURNEY.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="NormalDatedVehicleJourneyStatusEnumeration">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="planned"/>
+			<xsd:enumeration value="cancelled"/>
+			<xsd:enumeration value="cancelledAndReplaced">
+				<xsd:annotation>
+					<xsd:documentation>If this level of detail is supported in providing system, can be used to emphasise that there is expected to be a replacement of some kind for this cancelled NORMAL DATED VEHICLE JOURNEY.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="plannedReplacement">
+				<xsd:annotation>
+					<xsd:documentation>If this level of detail is supported in providing system, can be used to emphasise that this planned NORMAL DATED VEHICLE JOURNEY is primarily intended to serve as a complete or partial replacement for one or more cancelled NORMAL DATED VEHICLE JOURNEYs.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
 </xsd:schema>

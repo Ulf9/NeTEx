@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1" id="netex_serviceJourney_Version">
 	<xsd:include schemaLocation="netex_vehicleJourney_version.xsd"/>
-	<xsd:include schemaLocation="netex_flexibleService_version.xsd"/>
-	<xsd:include schemaLocation="../../netex_framework/netex_reusableComponents/netex_serviceCalendar_version.xsd"/>
-	<xsd:include schemaLocation="../../netex_part_1/part1_networkDescription/netex_flexibleNetwork_version.xsd"/>
-	<xsd:include schemaLocation="../../netex_framework/netex_reusableComponents/netex_equipmentVehiclePassenger_version.xsd"/>
-	<xsd:include schemaLocation="netex_call_version.xsd"/>
 	<!-- ==CLOSELY COUPLED ===================================================== -->
 	<xsd:annotation>
 		<xsd:appinfo>
@@ -98,9 +93,7 @@ Rail transport, Roads and Road transport
 	</xsd:element>
 	<xsd:element name="ServiceJourney" abstract="false" substitutionGroup="VehicleJourney_">
 		<xsd:annotation>
-			<xsd:documentation>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.
-
-The VIEW includes derived ancillary data from referenced entities.</xsd:documentation>
+			<xsd:documentation>A passenger carrying VEHICLE JOURNEY.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:complexContent>
@@ -138,6 +131,11 @@ The VIEW includes derived ancillary data from referenced entities.</xsd:document
 			<xsd:documentation>Elements for a SERVICE JOURNEY, including additional derived data.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
+			<xsd:element name="normalDatedVehicleJourneyViews" type="normalDatedJourneyView_RelStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>List of planned or previously planned NORMAL DATED VEHICLE JOURNEYs based on this VEHICLE JOURNEY. Note that this view is optional and contains secondary, partly redundant information. It shall not be used to calculate the validity of the VEHICLE JOURNEY itself.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
 			<xsd:group ref="ServiceAlterationGroup" minOccurs="0"/>
 			<xsd:group ref="ServiceTimeGroup"/>
 			<xsd:group ref="VehicleJourneyReferencesGroup"/>
@@ -355,7 +353,7 @@ The VIEW includes derived ancillary data from referenced entities.</xsd:document
 	</xsd:complexType>
 	<xsd:element name="SpecialService" abstract="false" substitutionGroup="Journey_">
 		<xsd:annotation>
-			<xsd:documentation>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.</xsd:documentation>
+			<xsd:documentation>A journey that is not planned in a classical way having specific characteristics and/or is operated under specific circumstances.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:complexContent>
