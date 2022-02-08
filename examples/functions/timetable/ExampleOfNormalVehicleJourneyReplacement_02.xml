@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns:gis="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="1.0" xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex ../../../xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2022-01-01T12:48:27</PublicationTimestamp>
+	<ParticipantRef>TAG</ParticipantRef>
+	<Description>Example of alternative to DatedServiceJourney</Description>
+	<dataObjects>
+		<CompositeFrame created="2022-01-01T13:19:22" version="115" id="TAG:CompositeFrame:Shared">
+			<!-- ====================== Validity ====================== -->
+			<validityConditions>
+				<AvailabilityCondition version="115" id="TAG:AvailabilityCondition:Shared">
+					<FromDate>2021-11-22T00:00:00</FromDate>
+					<ToDate>2021-11-28T00:00:00</ToDate>
+				</AvailabilityCondition>
+			</validityConditions>
+			<!-- ====================== CodeSpaces ====================== -->
+			<frames>
+				<ServiceCalendarFrame version="114" id="SE:TRV:ServiceCalendarFrame:Shared">
+					<ServiceCalendar version="114" id="SE:TRV:ServiceCalendar:Shared">
+						<!-- ====================== Day Assignments ====================== -->
+						<dayTypes>
+							<DayType version="0" id="SE:TRV:DayType:UIC-1_Daily_2021-11-22-Mon_2021-11-28-Sun"/>
+							<DayType version="0" id="SE:TRV:DayType:UIC-2_Thu_2021-11-22-Mon_2021-11-28-Sun"/>
+							<DayType version="0" id="SE:TRV:DayType:UIC-3_Daily_2021-11-22-Mon_2021-11-28-Sun"/>
+							<DayType version="0" id="SE:TRV:DayType:UIC-4_Daily_2021-11-22-Mon_2021-11-28-Sun"/>
+							<!-- more -->
+						</dayTypes>
+						<operatingDays>
+							<OperatingDay version="0" id="SE:TRV:OperatingDay:2021-11-22-Mon">
+								<CalendarDate>2021-11-22</CalendarDate>
+							</OperatingDay>
+							<OperatingDay version="0" id="SE:TRV:OperatingDay:2021-11-23-Tue">
+								<CalendarDate>2021-11-23</CalendarDate>
+							</OperatingDay>
+							<OperatingDay version="0" id="SE:TRV:OperatingDay:2021-11-24-Wed">
+								<CalendarDate>2021-11-24</CalendarDate>
+							</OperatingDay>
+							<OperatingDay version="0" id="SE:TRV:OperatingDay:2021-11-25-Thu">
+								<CalendarDate>2021-11-25</CalendarDate>
+							</OperatingDay>
+							<!-- more -->
+						</operatingDays>
+						<operatingPeriods>
+							<!-- used for long term plan - original ServiceJourney running every day... -->
+							<UicOperatingPeriod version="0" id="SE:TRV:UicOperatingPeriod:UIC-1_Daily_2021-11-22-Mon_2021-11-28-Sun">
+								<FromDate>2021-11-22T00:00:00</FromDate>
+								<ToDate>2021-11-28T00:00:00</ToDate>
+								<ValidDayBits>1111111</ValidDayBits>
+							</UicOperatingPeriod>
+							<!-- used for medium term modification - reduced running of original ServiceJourney ... -->
+							<UicOperatingPeriod version="0" id="SE:TRV:UicOperatingPeriod:UIC-2_Thu_2021-11-22-Mon_2021-11-28-Sun">
+								<FromDate>2021-11-22T00:00:00</FromDate>
+								<ToDate>2021-11-28T00:00:00</ToDate>
+								<ValidDayBits>1001111</ValidDayBits>
+							</UicOperatingPeriod>
+							<!-- used for medium term addition - validity for replacement ServiceJourneys... -->
+							<UicOperatingPeriod version="0" id="SE:TRV:UicOperatingPeriod:UIC-3_Thu_2021-11-22-Mon_2021-11-28-Sun">
+								<FromDate>2021-11-22T00:00:00</FromDate>
+								<ToDate>2021-11-28T00:00:00</ToDate>
+								<ValidDayBits>0110000</ValidDayBits>
+							</UicOperatingPeriod>
+							<!-- used for medium term modification - original ServiceJourney not running at all, can be used to allow including ServiceJourneys that have no validty... -->
+							<UicOperatingPeriod version="0" id="SE:TRV:UicOperatingPeriod:UIC-4_Thu_2021-11-22-Mon_2021-11-28-Sun">
+								<FromDate>2021-11-22T00:00:00</FromDate>
+								<ToDate>2021-11-28T00:00:00</ToDate>
+								<ValidDayBits>0000000</ValidDayBits>
+							</UicOperatingPeriod>
+							<!-- more -->
+						</operatingPeriods>
+						<!-- ====================== Day Type Assignments ====================== -->
+						<dayTypeAssignments>
+							<DayTypeAssignment order="1" version="0" id="SE:TRV:DayTypeAssignment:UIC-1_Daily_2021-11-22-Mon_2021-11-28-Sun">
+								<!-- The  DayType is valid every day... -->
+								<OperatingPeriodRef ref="SE:TRV:UicOperatingPeriod:UIC-1_Daily_2021-11-22-Mon_2021-11-28-Sun" version="0"/>
+								<DayTypeRef ref="SE:TRV:DayType:UIC-1_Daily_2021-11-22-Mon_2021-11-28-Sun" version="0"/>
+							</DayTypeAssignment>
+							<DayTypeAssignment order="2" version="0" id="SE:TRV:DayTypeAssignment:UIC-2_Daily_2021-11-22-Mon_2021-11-28-Sun">
+								<!-- The  DayType is valid most days, but not on dates where replacements are used... -->
+								<OperatingPeriodRef ref="SE:TRV:UicOperatingPeriod:UIC-2_Thu_2021-11-22-Mon_2021-11-28-Sun" version="0"/>
+								<DayTypeRef ref="SE:TRV:DayType:UIC-2_Thu_2021-11-22-Mon_2021-11-28-Sun" version="0"/>
+								<isAvailable>false</isAvailable>
+							</DayTypeAssignment>
+							<DayTypeAssignment order="3" version="0" id="SE:TRV:DayTypeAssignment:UIC-3_Daily_2021-11-22-Mon_2021-11-28-Sun">
+								<!-- The  DayType is valid only on dates where replacements are used, ... -->
+								<OperatingPeriodRef ref="SE:TRV:UicOperatingPeriod:UIC-3_Thu_2021-11-22-Mon_2021-11-28-Sun" version="0"/>
+								<DayTypeRef ref="SE:TRV:DayType:UIC-3_Daily_2021-11-22-Mon_2021-11-28-Sun" version="0"/>
+							</DayTypeAssignment>
+							<DayTypeAssignment order="4" version="0" id="SE:TRV:DayTypeAssignment:UIC-4_Daily_2021-11-22-Mon_2021-11-28-Sun">
+								<!-- Exposing that this DayType has no valid days at all... -->
+								<OperatingPeriodRef ref="SE:TRV:UicOperatingPeriod:UIC-4_Thu_2021-11-22-Mon_2021-11-28-Sun" version="0"/>
+								<DayTypeRef ref="SE:TRV:DayType:UIC-4_Daily_2021-11-22-Mon_2021-11-28-Sun" version="0"/>
+							</DayTypeAssignment>
+						</dayTypeAssignments>
+					</ServiceCalendar>
+				</ServiceCalendarFrame>
+				<TimetableFrame version="115" id="TAG:TimetableFrame:40">
+					<vehicleJourneys>
+						<!-- A ServiceJourney that is running every day-->
+						<ServiceJourney version="2" id="SE:TRV:ServiceJourney:3963_3-R">
+							<PrivateCode>3963</PrivateCode>
+							<TransportMode>rail</TransportMode>
+							<!-- This is the new section that replaces the need for having separate DatedServiceJourney as envisioned by EnTur -->
+							<normalDatedVehicleJourneys>
+								<NormalDatedVehicleJourney id="TAG:DatedServiceJourney:3963_3-R_21-11-22">
+									<OperatingDayRef ref="TAG:OperatingDay:2021-11-22-Mon"/>
+								</NormalDatedVehicleJourney>
+								<NormalDatedVehicleJourney id="TAG:DatedServiceJourney:3963_3-R_21-11-23">
+									<OperatingDayRef ref="TAG:OperatingDay:2021-11-23-Tue"/>
+								</NormalDatedVehicleJourney>
+								<NormalDatedVehicleJourney id="TAG:DatedServiceJourney:3963_3-R_21-11-24">
+									<OperatingDayRef ref="TAG:OperatingDay:2021-11-24-Wed"/>
+								</NormalDatedVehicleJourney>
+								<!--  more... -->
+							</normalDatedVehicleJourneys>
+							<dayTypes>
+								<DayTypeRef ref="SE:TRV:DayType:UIC-1_Daily_2021-11-22-Mon_2021-11-28-Sun"/>
+							</dayTypes>
+							<ServiceJourneyPatternRef ref="SE:TRV:ServiceJourneyPattern:40-2"/>
+							<OperatorRef ref="SE:TRV:Operator:VYG"/>
+							<passingTimes>
+								<TimetabledPassingTime version="0" id="SE:TRV:TimetabledPassingTime:3963_3_1_BDN">
+									<StopPointInJourneyPatternRef ref="SE:TRV:StopPointInJourneyPattern:40-2-1" version="0"/>
+									<DepartureTime>21:57:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime version="0" id="SE:TRV:TimetabledPassingTime:3963_3_2_SUS">
+									<StopPointInJourneyPatternRef ref="SE:TRV:StopPointInJourneyPattern:40-2-2" version="0"/>
+									<ArrivalTime>22:13:00</ArrivalTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime version="0" id="SE:TRV:TimetabledPassingTime:3963_3_3_LE">
+									<StopPointInJourneyPatternRef ref="SE:TRV:StopPointInJourneyPattern:40-2-3" version="0"/>
+									<ArrivalTime>22:23:00</ArrivalTime>
+								</TimetabledPassingTime>
+							</passingTimes>
+						</ServiceJourney>
+						<!-- A normally daily ServiceJourney that now has been reduced to run on all but two dates -->
+						<ServiceJourney version="2" id="TAG:ServiceJourney:94-CST_7-R">
+							<PrivateCode>94</PrivateCode>
+							<TransportMode>rail</TransportMode>
+							<!-- This is the new section that replaces the need for having separate DatedServiceJourney as envisioned by EnTur, -->
+							<!-- note that it includes information also about the cancelled NORMAL DATED VEHICLEs -->
+							<normalDatedVehicleJourneys>
+								<NormalDatedVehicleJourney version="0" id="TAG:DatedServiceJourney:94_CST-NO-NK_21-11-22">
+									<OperatingDayRef ref="SE:TRV:OperatingDay:2021-11-22-Mon" version="0"/>
+								</NormalDatedVehicleJourney>
+								<NormalDatedVehicleJourney version="0" id="TAG:DatedServiceJourney:94_CST-NO-NK_21-11-23">
+									<OperatingDayRef ref="SE:TRV:OperatingDay:2021-11-23-Tue" version="0"/>
+									<Status>cancelled</Status>
+								</NormalDatedVehicleJourney>
+								<NormalDatedVehicleJourney version="0" id="TAG:DatedServiceJourney:94_CST-NO-NK_21-11-24">
+									<OperatingDayRef ref="SE:TRV:OperatingDay:2021-11-24-Wed" version="0"/>
+									<Status>cancelledAndReplaced</Status>
+								</NormalDatedVehicleJourney>
+								<NormalDatedVehicleJourney version="0" id="TAG:DatedServiceJourney:94_CST-NO-NK_21-11-25">
+									<OperatingDayRef ref="SE:TRV:OperatingDay:2021-11-25-Thu" version="0"/>
+									<Status>cancelledAndHasAlternative</Status>
+								</NormalDatedVehicleJourney>
+								<!--  more... -->
+							</normalDatedVehicleJourneys>
+							<dayTypes>
+								<DayTypeRef ref="SE:TRV:DayType:UIC-2_Daily_2021-11-22-Mon_2021-11-28-Sun"/>
+							</dayTypes>
+							<ServiceJourneyPatternRef ref="SE:TRV:ServiceJourneyPattern:40-4"/>
+							<OperatorRef ref="TAG:Operator:TAG"/>
+							<LineRef ref="TAG:Line:40"/>
+							<passingTimes>
+								<TimetabledPassingTime version="0" id="TAG:TimetabledPassingTime:94-CST_7_1_CST">
+									<StopPointInJourneyPatternRef ref="TAG:StopPointInJourneyPattern:40-4-1" version="0"/>
+									<DepartureTime>18:03:00</DepartureTime>
+								</TimetabledPassingTime>
+								<!--  more... -->
+								<TimetabledPassingTime version="0" id="TAG:TimetabledPassingTime:94-CST_7_27_NO-NK">
+									<StopPointInJourneyPatternRef ref="TAG:StopPointInJourneyPattern:40-4-27" version="0"/>
+									<ArrivalTime>12:47:00</ArrivalTime>
+									<ArrivalDayOffset>1</ArrivalDayOffset>
+								</TimetabledPassingTime>
+							</passingTimes>
+						</ServiceJourney>
+						<!-- A replacement journey running on two dates only -->
+						<ServiceJourney version="1" id="TAG:ServiceJourney:94-CST_7-R_replacement_A">
+							<PrivateCode>94</PrivateCode>
+							<TransportMode>rail</TransportMode>
+							<!-- This is the new section that replaces the need for having separate DatedServiceJourney as envisioned by EnTur, -->
+							<!-- note that it includes information of what it replaces also! -->
+							<normalDatedVehicleJourneys>
+								<NormalDatedVehicleJourney id="TAG:DatedServiceJourney:94-CST_7-R_replacement_A_21-11-23">
+									<OperatingDayRef ref="TAG:OperatingDay:2021-11-23-Tue"/>
+									<replacedDatedVehicleJourneys>
+										<ReplacedDatedVehicleJourney>
+											<NormalDatedVehicleJourneyRef ref="TAG:DatedServiceJourney:94_CST-NO-NK_21-11-23" version="0"/>
+										</ReplacedDatedVehicleJourney>
+									</replacedDatedVehicleJourneys>
+								</NormalDatedVehicleJourney>
+								<NormalDatedVehicleJourney id="TAG:DatedServiceJourney:94-CST_7-R_replacement_A_21-11-24">
+									<OperatingDayRef ref="TAG:OperatingDay:2021-11-24-Wed"/>
+									<Status>plannedReplacement</Status>
+									<replacedDatedVehicleJourneys>
+										<ReplacedDatedVehicleJourney>
+											<NormalDatedVehicleJourneyRef ref="TAG:DatedServiceJourney:94_CST-NO-NK_21-11-24" version="0"/>
+										</ReplacedDatedVehicleJourney>
+									</replacedDatedVehicleJourneys>
+								</NormalDatedVehicleJourney>
+							</normalDatedVehicleJourneys>
+							<ServiceJourneyPatternRef ref="SE:TRV:ServiceJourneyPattern:40-5"/>
+							<OperatorRef ref="TAG:Operator:TAG"/>
+							<LineRef ref="TAG:Line:40"/>
+							<passingTimes>
+								<TimetabledPassingTime version="0" id="TAG:TimetabledPassingTime:94-CST_7_1_CST">
+									<StopPointInJourneyPatternRef ref="TAG:StopPointInJourneyPattern:40-5-1" version="0"/>
+									<DepartureTime>18:03:00</DepartureTime>
+								</TimetabledPassingTime>
+								<!--  more... -->
+								<TimetabledPassingTime version="0" id="TAG:TimetabledPassingTime:94-CST_7_27_NO-NK">
+									<StopPointInJourneyPatternRef ref="TAG:StopPointInJourneyPattern:40-5-27" version="0"/>
+									<ArrivalTime>12:55:00</ArrivalTime>
+									<ArrivalDayOffset>1</ArrivalDayOffset>
+								</TimetabledPassingTime>
+							</passingTimes>
+						</ServiceJourney>
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
