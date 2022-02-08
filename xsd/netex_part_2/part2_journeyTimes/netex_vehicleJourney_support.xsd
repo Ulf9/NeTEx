@@ -21,7 +21,7 @@
 				<Date>
 					<Modified>2019-03-25</Modified>CR 51 CD Add VehiclJourneyStop Assignment
 				</Date>
-						<Date>
+				<Date>
 					<Modified>2019-03-26</Modified>NL-27 Add default  TypeOfProductCategory and TypeOfService to Line.
 					  Move TypeOfProductCategory amnd TypeOfService from netex_vehicleJourney  to  Framework reusable components netex_travelRights  so they are visible from part 1
 				</Date>
@@ -362,7 +362,12 @@ Rail transport, Roads and Road transport
 			<xsd:enumeration value="cancelled"/>
 			<xsd:enumeration value="cancelledAndReplaced">
 				<xsd:annotation>
-					<xsd:documentation>If this level of detail is supported in providing system, can be used to emphasise that there is expected to be a replacement of some kind for this cancelled NORMAL DATED VEHICLE JOURNEY.</xsd:documentation>
+					<xsd:documentation>A specific replacement is planned for this cancelled NORMAL DATED VEHICLE JOURNEY.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="cancelledAndHasAlternative">
+				<xsd:annotation>
+					<xsd:documentation>A non-specific replacement will be available for this cancelled NORMAL DATED VEHICLE JOURNEY.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:enumeration>
 			<xsd:enumeration value="plannedReplacement">

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Hogia Public Transport Systems AB (Hogia Public Transport Systems AB) -->
 <xsd:schema xmlns="http://www.netex.org.uk/netex" xmlns:netex="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1" id="netex_vehicleJourney_version">
 	<xsd:include schemaLocation="../../netex_part_1/part1_networkDescription/netex_route_support.xsd"/>
 	<xsd:include schemaLocation="../../netex_part_1/part1_networkDescription/netex_line_support.xsd"/>
@@ -171,7 +172,7 @@ Rail transport, Roads and Road transport
 			<xsd:documentation>Elements for VEHICLE JOURNEY.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:element name="normalDatedVehicleJourneyViews" type="normalDatedJourneyView_RelStructure" minOccurs="0">
+			<xsd:element name="normalDatedVehicleJourneys" type="normalDatedJourney_RelStructure" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>OPERATING DAY centric view that provides the unique identifier and details of individual planned or previously planned NORMAL DATED VEHICLE JOURNEYs based on this VEHICLE JOURNEY.</xsd:documentation>
 				</xsd:annotation>
@@ -676,14 +677,14 @@ Rail transport, Roads and Road transport
 		</xsd:sequence>
 	</xsd:group>
 	<!-- ======================================================================= -->
-	<xsd:complexType name="normalDatedJourneyView_RelStructure">
+	<xsd:complexType name="normalDatedJourney_RelStructure">
 		<xsd:annotation>
 			<xsd:documentation>Type for containment of NORMAL DATED VEHICLE JOURNEY views. Only to be used in contexts of a single VEHICLE JOURNEY.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexContent>
 			<xsd:extension base="containmentAggregationStructure">
 				<xsd:sequence maxOccurs="unbounded">
-					<xsd:element ref="NormalDatedVehicleJourneyView">
+					<xsd:element ref="NormalDatedVehicleJourney">
 						<xsd:annotation>
 							<xsd:documentation>A NORMAL DATED VEHICLE JOURNEY represents what is planned in the scheduling process. Note that changes to the production plan (which are typically decided by control staff) during the current OPERATING DAY are not covered by NeTEx. Such changes are exclusively in scope of SIRI.</xsd:documentation>
 						</xsd:annotation>
@@ -692,12 +693,12 @@ Rail transport, Roads and Road transport
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-	<xsd:complexType name="NormalDatedVehicleJourney_DerivedViewStructure" abstract="false">
+	<xsd:complexType name="NormalDatedVehicleJourney_EntityInVersionStructure" abstract="false">
 		<xsd:annotation>
 			<xsd:documentation>Data type for NORMAL DATED VEHICLE JOURNEY.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexContent>
-			<xsd:extension base="DerivedViewStructure">
+			<xsd:extension base="EntityStructure">
 				<xsd:sequence>
 					<xsd:annotation>
 						<xsd:documentation>Note that the VEHICLE JOURNEY that this NORMAL DATED VEHICLE JOURNEY is based on is deducted from context</xsd:documentation>
@@ -710,7 +711,7 @@ Rail transport, Roads and Road transport
 					<xsd:element ref="OperatingDayRef"/>
 					<xsd:element name="Status" type="NormalDatedVehicleJourneyStatusEnumeration" minOccurs="0">
 						<xsd:annotation>
-							<xsd:documentation>Describes if this NORMAL DATED VEHICLE JOURNEY is expected to be exectued as planned or if it has been cancelled already during the planning phase. Default is planned.</xsd:documentation>
+							<xsd:documentation>Describes if this NORMAL DATED VEHICLE JOURNEY is expected to be exectued as planned or if it has been cancelled already during the planning phase. Default is planned. More fine-grained alternative values are: cancelledAndReplaced, cancelledAndHasAlternative and plannedReplacement. </xsd:documentation>
 						</xsd:annotation>
 					</xsd:element>
 					<xsd:element name="replacedDatedVehicleJourneys" minOccurs="0">
@@ -762,11 +763,17 @@ Rail transport, Roads and Road transport
 						</xsd:complexType>
 					</xsd:element>
 				</xsd:sequence>
+				<xsd:attribute name="dataSourceRef" type="DataSourceIdType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation>Name of source of the data.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attributeGroup ref="BasicModificationDetailsGroup"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
 	<!-- ======================================================================= -->
-	<xsd:element name="NormalDatedVehicleJourneyView" type="NormalDatedVehicleJourney_DerivedViewStructure" abstract="false">
+	<xsd:element name="NormalDatedVehicleJourney" type="NormalDatedVehicleJourney_EntityInVersionStructure" abstract="false">
 		<xsd:annotation>
 			<xsd:documentation>A NORMAL DATED VEHICLE JOURNEY is identical to a planned VEHICLE JOURNEY and defined for a particular OPERATING DAY</xsd:documentation>
 			<xsd:documentation>If this NORMAL DATED VEHICLE JOURNEY is a replacement the replaced NORMAL DATED VEHICLE JOURNEY will be indicated.</xsd:documentation>

@@ -131,7 +131,7 @@ Rail transport, Roads and Road transport
 			<xsd:documentation>Elements for a SERVICE JOURNEY, including additional derived data.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:element name="normalDatedVehicleJourneyViews" type="normalDatedJourneyView_RelStructure" minOccurs="0">
+			<xsd:element name="normalDatedVehicleJourneys" type="normalDatedJourney_RelStructure" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>List of planned or previously planned NORMAL DATED VEHICLE JOURNEYs based on this VEHICLE JOURNEY. Note that this view is optional and contains secondary, partly redundant information. It shall not be used to calculate the validity of the VEHICLE JOURNEY itself.</xsd:documentation>
 				</xsd:annotation>
